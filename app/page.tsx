@@ -1,8 +1,5 @@
 import WireframeSection from "./components/WireframeSection";
 import Marquee from "./components/Marquee";
-import Section from "./components/Section";
-import ValuesSection from "./components/ValuesSection";
-import Footer from "./components/Footer";
 import ClamoreLogo from "./components/ClamoreLogo";
 
 export default function Home() {
@@ -10,8 +7,8 @@ export default function Home() {
     <main className="min-h-[100dvh] bg-cream snap-y snap-mandatory">
       {/* Manifesto Button - Left Side */}
       <a
-        href="/clamore/manifesto"
-        className="fixed left-2 sm:left-4 md:left-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        href="/manifesto"
+        className="fixed left-2 sm:left-4 md:left-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -22,8 +19,8 @@ export default function Home() {
 
       {/* Contact Us Button - Right Side */}
       <a
-        href="/contact"
-        className="fixed right-2 sm:right-4 md:right-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        href="mailto:clamore.bergamo@gmail.com"
+        className="fixed right-2 sm:right-4 md:right-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -37,7 +34,7 @@ export default function Home() {
         href="https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-2 sm:bottom-4 md:bottom-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed bottom-2 sm:bottom-4 md:bottom-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -49,10 +46,10 @@ export default function Home() {
       {/* Social Links - Bottom Right */}
       <div className="fixed bottom-2 sm:bottom-4 md:bottom-8 right-2 sm:right-4 md:right-8 z-30 flex items-center gap-2 sm:gap-3 md:gap-4">
         <a
-          href="https://www.instagram.com/inkclubbergamo/"
+          href="https://www.instagram.com/clamore.festival/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Instagram"
         >
           <svg
@@ -66,10 +63,10 @@ export default function Home() {
           </svg>
         </a>
         <a
-          href="https://www.facebook.com/inkclubbergamo/"
+          href="https://www.facebook.com/clamorebergamo/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Facebook"
         >
           <svg
@@ -101,7 +98,7 @@ export default function Home() {
             href="https://www.inkclub.bergamo.it/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="underline hover:no-underline font-bold"
+            className="underline hover:no-underline font-bold cursor-pointer"
             style={{ color: '#E84627' }}
           >
             Ink Club APS

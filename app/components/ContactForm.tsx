@@ -224,7 +224,7 @@ export default function ContactForm() {
           type="submit"
           disabled={isSubmitting}
           className={`w-full px-5 md:px-6 py-3 md:py-4 border-2 border-black rounded-full bg-black text-cream font-bold font-gambarino text-base md:text-lg lg:text-xl hover:bg-cream hover:text-black transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
-            isSubmitting ? "cursor-wait" : ""
+            isSubmitting ? "cursor-wait" : "cursor-pointer"
           }`}
         >
           {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
