@@ -8,7 +8,7 @@ export default function Home() {
       {/* Manifesto Button - Left Side */}
       <a
         href="/manifesto"
-        className="fixed left-2 sm:left-4 md:left-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className="fixed left-2 sm:left-4 md:left-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -20,7 +20,7 @@ export default function Home() {
       {/* Contact Us Button - Right Side */}
       <a
         href="mailto:clamore.bergamo@gmail.com"
-        className="fixed right-2 sm:right-4 md:right-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className="fixed right-2 sm:right-4 md:right-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -34,7 +34,7 @@ export default function Home() {
         href="https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-2 sm:bottom-4 md:bottom-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className="fixed bottom-2 sm:bottom-4 md:bottom-4 left-2 sm:left-4 md:left-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -44,7 +44,7 @@ export default function Home() {
       </a>
 
       {/* Social Links - Bottom Right */}
-      <div className="fixed bottom-2 sm:bottom-4 md:bottom-8 right-2 sm:right-4 md:right-8 z-30 flex items-center gap-2 sm:gap-3 md:gap-4">
+      <div className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-2 sm:gap-3 md:gap-2">
         <a
           href="https://www.instagram.com/clamore.festival/"
           target="_blank"
@@ -53,7 +53,7 @@ export default function Home() {
           aria-label="Instagram"
         >
           <svg
-            className="w-7 h-7 sm:w-6 sm:h-6 md:w-7 md:h-7"
+            className="w-9 h-9 sm:w-6 sm:h-6 md:w-9 md:h-9"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export default function Home() {
           aria-label="Facebook"
         >
           <svg
-            className="w-7 h-7 sm:w-6 sm:h-6 md:w-7 md:h-7"
+            className="w-9 h-9 sm:w-6 sm:h-6 md:w-9 md:h-9"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ export default function Home() {
         </a>
       </div>
       
-      <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-6 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
+      <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-4 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
         <div 
           className="font-bold font-brand uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
           style={{ color: '#E84627' }}
