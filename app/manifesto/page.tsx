@@ -38,7 +38,7 @@ export default function ManifestoPage() {
     if (otherElements.length > 0) {
       gsap.set(otherElements, {
         opacity: 0,
-        y: 30,
+        y: 10,
       });
     }
 
@@ -52,52 +52,47 @@ export default function ManifestoPage() {
       tl.to(logoImageRef.current, {
         opacity: 1,
         scale: 1,
-        duration: 1.0,
+        duration: 0.6,
         ease: "expo.inOut",
       }, "logo");
     }
 
     // Phase 2: Animate rest of content after logo (starts earlier, overlapping slightly)
     if (backButtonRef.current && contactButtonRef.current) {
-      // Opacity fades in first
       tl.to([backButtonRef.current, contactButtonRef.current], {
         opacity: 1,
-        duration: 0.7,
-        ease: "sine.inOut",
-      }, "logo+=0.5")
-        // Then translate up
-        .to([backButtonRef.current, contactButtonRef.current], {
-          y: 0,
-          duration: 0.9,
-          ease: "expo.inOut",
-        }, "logo+=0.6");
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+        stagger: 0.1,
+      }, "logo+=0.3");
     }
 
     if (smartLogoRef.current) {
       tl.to(smartLogoRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=0.7");
+      }, "logo+=0.4");
     }
 
     if (manifestoImageRef.current) {
       tl.to(manifestoImageRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=0.8");
+      }, "logo+=0.5");
     }
 
     if (textContentRef.current) {
       tl.to(textContentRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=0.9");
+      }, "logo+=0.6");
     }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
@@ -112,7 +107,7 @@ export default function ManifestoPage() {
           borderColor: '#E84627',
           color: '#E84627',
           opacity: 0,
-          transform: 'translateY(30px)'
+          transform: 'translateY(10px)'
         }}
       >
         <span>←</span>
@@ -128,14 +123,14 @@ export default function ManifestoPage() {
           borderColor: '#E84627',
           color: '#E84627',
           opacity: 0,
-          transform: 'translateY(30px)'
+          transform: 'translateY(10px)'
         }}
       >
         Contact Us
       </a>
 
       {/* Smart Logo - Center */}
-      <div ref={smartLogoRef} className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30" style={{ opacity: 0, transform: 'translate(-50%, 30px)' }}>
+      <div ref={smartLogoRef} className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30" style={{ opacity: 0, transform: 'translate(-50%, 10px)' }}>
         <img 
           src="/logo/smart.svg" 
           alt="Smart Logo" 
@@ -144,14 +139,14 @@ export default function ManifestoPage() {
       </div>
 
       <section className="px-3 sm:px-4 md:px-4 lg:px-8 mt-20 sm:mt-24 md:mt-32 mb-5 w-full mx-auto">
-        <div ref={manifestoImageRef} className="mb-8 md:mb-12 w-full" style={{ opacity: 0, transform: 'translateY(30px)' }}>
+        <div ref={manifestoImageRef} className="mb-8 md:mb-12 w-full" style={{ opacity: 0, transform: 'translateY(10px)' }}>
           <img 
             src="/svg/manifesto.svg" 
             alt="Manifesto" 
             className="w-full h-auto"
           />
         </div>
-        <div ref={textContentRef} className="font-sans font-medium tracking-tight text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight sm:leading-tighter space-y-4 sm:space-y-6 text-justify" style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}>
+        <div ref={textContentRef} className="font-sans font-medium tracking-tight text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight sm:leading-tighter space-y-4 sm:space-y-6 text-justify" style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}>
           <p>
             <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
             <a 

@@ -43,7 +43,7 @@ export default function Home() {
     if (otherElements.length > 0) {
       gsap.set(otherElements, {
         opacity: 0,
-        y: 30,
+        y: 10,
       });
     }
 
@@ -57,58 +57,69 @@ export default function Home() {
       tl.to(logoContainerRef.current, {
         opacity: 1,
         scale: 1,
-        duration: 1.0,
+        duration: 0.6,
         ease: "expo.inOut",
       }, "logo");
     }
 
     // Phase 2: Animate rest of content after logo (starts earlier, overlapping slightly)
     if (manifestoButtonRef.current && contactButtonRef.current) {
-      // Opacity fades in first
       tl.to([manifestoButtonRef.current, contactButtonRef.current], {
         opacity: 1,
-        duration: 0.7,
-        ease: "sine.inOut",
-      }, "logo+=0.5")
-        // Then translate up
-        .to([manifestoButtonRef.current, contactButtonRef.current], {
-          y: 0,
-          duration: 0.9,
-          ease: "expo.inOut",
-        }, "logo+=0.6");
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+        stagger: 0.1,
+      }, "logo+=0.3");
     }
 
-    if (fotoButtonRef.current && socialLinksRef.current) {
-      // Opacity fades in first
-      tl.to([fotoButtonRef.current, socialLinksRef.current], {
+    if (fotoButtonRef.current) {
+      tl.to(fotoButtonRef.current, {
         opacity: 1,
-        duration: 0.7,
-        ease: "sine.inOut",
-      }, "logo+=0.7")
-        // Then translate up
-        .to([fotoButtonRef.current, socialLinksRef.current], {
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.4");
+    }
+
+    if (socialLinksRef.current) {
+      // Animate parent div first
+      tl.to(socialLinksRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.4");
+      
+      // Then animate individual links with stagger
+      const socialLinks = socialLinksRef.current.querySelectorAll('a');
+      if (socialLinks.length > 0) {
+        tl.to(Array.from(socialLinks), {
+          opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.5,
           ease: "expo.inOut",
-        }, "logo+=0.8");
+          stagger: 0.1,
+        }, "logo+=0.4");
+      }
     }
 
     if (comingSoonRef.current) {
       tl.to(comingSoonRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=0.9");
+      }, "logo+=0.5");
     }
 
     if (descriptionRef.current) {
       tl.to(descriptionRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=1.0");
+      }, "logo+=0.6");
     }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
@@ -123,7 +134,7 @@ export default function Home() {
           borderColor: '#E84627',
           color: '#E84627',
           opacity: 0,
-          transform: 'translateY(30px)'
+          transform: 'translateY(10px)'
         }}
       >
         Manifesto
@@ -138,7 +149,7 @@ export default function Home() {
           borderColor: '#E84627',
           color: '#E84627',
           opacity: 0,
-          transform: 'translateY(30px)'
+          transform: 'translateY(10px)'
         }}
       >
         Contact Us
@@ -155,14 +166,14 @@ export default function Home() {
           borderColor: '#E84627',
           color: '#E84627',
           opacity: 0,
-          transform: 'translateY(30px)'
+          transform: 'translateY(10px)'
         }}
       >
         foto 2025
       </a>
 
       {/* Social Links - Bottom Right */}
-      <div ref={socialLinksRef} className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-3 sm:gap-4 md:gap-3" style={{ opacity: 0, transform: 'translateY(30px)' }}>
+      <div ref={socialLinksRef} className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-3 sm:gap-4 md:gap-3" style={{ opacity: 0, transform: 'translateY(10px)' }}>
         <a
           href="https://www.instagram.com/clamore.festival/"
           target="_blank"
@@ -203,7 +214,7 @@ export default function Home() {
         <div 
           ref={comingSoonRef}
           className="font-bold font-brand uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
-          style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}
+          style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
         >
           Coming Soon
         </div>
@@ -213,7 +224,7 @@ export default function Home() {
         <div 
           ref={descriptionRef}
           className="font-sans font-medium tracking-tight text-center text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl leading-tight px-2"
-          style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}
+          style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
         >
           <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
           <a 
