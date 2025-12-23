@@ -4,7 +4,7 @@ export default function ManifestoPage() {
       {/* Back Button */}
       <a
         href="/"
-        className="fixed top-2 sm:top-4 md:top-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center gap-2 w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className="fixed top-2 sm:top-4 md:top-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center gap-2 w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -17,7 +17,7 @@ export default function ManifestoPage() {
       {/* Contact Us Button */}
       <a
         href="/contact"
-        className="fixed top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className="fixed top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
