@@ -52,6 +52,73 @@ const benzin = localFont({
   ],
 });
 
+const generalSans = localFont({
+  variable: "--font-general-sans",
+  display: "swap",
+  src: [
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Extralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-ExtralightItalic.woff2",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-LightItalic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-MediumItalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-SemiboldItalic.woff2",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/General Sans/GeneralSans-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+});
+
 export const metadata: Metadata = {
   title: "Clamore",
   description: "Clamore",
@@ -65,7 +132,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${benzin.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${benzin.variable} ${generalSans.variable} antialiased`}
       >
         <LoaderProvider>
           <LenisProvider>

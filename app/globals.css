@@ -66,6 +66,7 @@
   --font-brand: var(--font-benzin);
   --font-apfel: var(--font-apfel);
   --font-gambarino: var(--font-gambarino);
+  --font-general-sans: var(--font-general-sans);
   }
 
 @media (prefers-color-scheme: dark) {
