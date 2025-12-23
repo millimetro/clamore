@@ -8,6 +8,7 @@ import { GSAPTimelineViewer } from "./components/tools/GSAPTimeline";
 import Menu from "./components/Menu/Menu";
 import LenisProvider from "./components/tools/LenisProvider";
 import { LoaderProvider } from "./contexts/LoaderContext";
+import { generateMetadata as generateSEOMetadata, generateStructuredData } from "./lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,10 +119,7 @@ const generalSans = localFont({
   ],
 });
 
-export const metadata: Metadata = {
-  title: "Clamore",
-  description: "Clamore",
-};
+export const metadata = generateSEOMetadata();
 
 export const viewport = {
   width: "device-width",
@@ -134,8 +132,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = generateStructuredData();
+
   return (
-    <html lang="en">
+    <html lang="it">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${benzin.variable} ${generalSans.variable} antialiased`}
       >
