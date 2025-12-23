@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Apfel Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ApfelGrotesk/ApfelGrotezk-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Apfel Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ApfelGrotesk/ApfelGrotezk-Mittel.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Apfel Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ApfelGrotesk/ApfelGrotezk-Satt.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Apfel Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/ApfelGrotesk/ApfelGrotezk-Fett.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Apfel Grotesk";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/ApfelGrotesk/ApfelGrotezk-Brukt.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Gambarino";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Gambarino_Complete/Fonts/WEB/fonts/Gambarino-Regular.woff2") format("woff2");
+}
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --black: #161616;
+  --cream: #e2e0d8;
+  --font-apfel: "Apfel Grotesk";
+  --font-gambarino: "Gambarino";
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-black: var(--black);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-brand: var(--font-benzin);
+  --font-apfel: var(--font-apfel);
+  --font-gambarino: var(--font-gambarino);
+  }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--background);
+  background: var(--cream);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family: var(--font-apfel), var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Neobrutalist Styles */
+.neobrutalist-box {
+  box-shadow: 8px 8px 0px 0px var(--black);
+  border: 4px solid var(--black);
+  background: white;
+}
+
+.neobrutalist-text {
+  text-shadow: 4px 4px 0px var(--black);
+  letter-spacing: -0.02em;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 90s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
