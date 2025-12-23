@@ -1,17 +1,129 @@
+"use client";
+
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import WireframeSection from "./components/WireframeSection";
 import Marquee from "./components/Marquee";
 import ClamoreLogo from "./components/ClamoreLogo";
+import { useLoader } from "./contexts/LoaderContext";
 
 export default function Home() {
+  const manifestoButtonRef = useRef<HTMLAnchorElement>(null);
+  const contactButtonRef = useRef<HTMLAnchorElement>(null);
+  const fotoButtonRef = useRef<HTMLAnchorElement>(null);
+  const socialLinksRef = useRef<HTMLDivElement>(null);
+  const comingSoonRef = useRef<HTMLDivElement>(null);
+  const logoContainerRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLDivElement>(null);
+  const mainContainerRef = useRef<HTMLElement>(null);
+  const { isLoaderComplete } = useLoader();
+
+  useGSAP(() => {
+    if (!mainContainerRef.current) return;
+
+    // Get all other elements (excluding logo) to animate after logo
+    const otherElements = [
+      manifestoButtonRef.current,
+      contactButtonRef.current,
+      fotoButtonRef.current,
+      socialLinksRef.current,
+      comingSoonRef.current,
+      descriptionRef.current,
+    ].filter(Boolean);
+
+    // Set initial state immediately - logo starts hidden/scaled down, other elements hidden
+    if (logoContainerRef.current) {
+      gsap.set(logoContainerRef.current, {
+        opacity: 0,
+        scale: 0.5,
+      });
+    }
+
+    if (otherElements.length > 0) {
+      gsap.set(otherElements, {
+        opacity: 0,
+        y: 30,
+      });
+    }
+
+    // Create timeline for entrance animation
+    const tl = gsap.timeline({
+      delay: isLoaderComplete ? 0.1 : 0, // Reduced delay
+    });
+
+    // Phase 1: Animate logo in first (loader-like entrance)
+    if (logoContainerRef.current) {
+      tl.to(logoContainerRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.0,
+        ease: "expo.inOut",
+      }, "logo");
+    }
+
+    // Phase 2: Animate rest of content after logo (starts earlier, overlapping slightly)
+    if (manifestoButtonRef.current && contactButtonRef.current) {
+      // Opacity fades in first
+      tl.to([manifestoButtonRef.current, contactButtonRef.current], {
+        opacity: 1,
+        duration: 0.7,
+        ease: "sine.inOut",
+      }, "logo+=0.5")
+        // Then translate up
+        .to([manifestoButtonRef.current, contactButtonRef.current], {
+          y: 0,
+          duration: 0.9,
+          ease: "expo.inOut",
+        }, "logo+=0.6");
+    }
+
+    if (fotoButtonRef.current && socialLinksRef.current) {
+      // Opacity fades in first
+      tl.to([fotoButtonRef.current, socialLinksRef.current], {
+        opacity: 1,
+        duration: 0.7,
+        ease: "sine.inOut",
+      }, "logo+=0.7")
+        // Then translate up
+        .to([fotoButtonRef.current, socialLinksRef.current], {
+          y: 0,
+          duration: 0.9,
+          ease: "expo.inOut",
+        }, "logo+=0.8");
+    }
+
+    if (comingSoonRef.current) {
+      tl.to(comingSoonRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "expo.inOut",
+      }, "logo+=0.9");
+    }
+
+    if (descriptionRef.current) {
+      tl.to(descriptionRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "expo.inOut",
+      }, "logo+=1.0");
+    }
+  }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
+
   return (
-    <main className="min-h-[100dvh] bg-cream snap-y snap-mandatory">
+    <main ref={mainContainerRef} className="min-h-[100dvh] bg-cream snap-y snap-mandatory">
       {/* Manifesto Button - Left Side */}
       <a
+        ref={manifestoButtonRef}
         href="/manifesto"
         className="fixed left-2 sm:left-4 md:left-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627'
+          color: '#E84627',
+          opacity: 0,
+          transform: 'translateY(30px)'
         }}
       >
         Manifesto
@@ -19,11 +131,14 @@ export default function Home() {
 
       {/* Contact Us Button - Right Side */}
       <a
+        ref={contactButtonRef}
         href="mailto:clamore.bergamo@gmail.com"
         className="fixed right-2 sm:right-4 md:right-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627'
+          color: '#E84627',
+          opacity: 0,
+          transform: 'translateY(30px)'
         }}
       >
         Contact Us
@@ -31,20 +146,23 @@ export default function Home() {
 
       {/* Foto 2025 Button - Bottom Left */}
       <a
+        ref={fotoButtonRef}
         href="https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-2 sm:bottom-4 md:bottom-4 left-2 sm:left-4 md:left-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627'
+          color: '#E84627',
+          opacity: 0,
+          transform: 'translateY(30px)'
         }}
       >
         foto 2025
       </a>
 
       {/* Social Links - Bottom Right */}
-      <div className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-3 sm:gap-4 md:gap-3">
+      <div ref={socialLinksRef} className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-3 sm:gap-4 md:gap-3" style={{ opacity: 0, transform: 'translateY(30px)' }}>
         <a
           href="https://www.instagram.com/clamore.festival/"
           target="_blank"
@@ -83,15 +201,19 @@ export default function Home() {
       
       <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-4 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
         <div 
+          ref={comingSoonRef}
           className="font-bold font-brand uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
-          style={{ color: '#E84627' }}
+          style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}
         >
           Coming Soon
         </div>
-        <ClamoreLogo />
+        <div ref={logoContainerRef} style={{ opacity: 0, transform: 'scale(0.5)' }}>
+          <ClamoreLogo />
+        </div>
         <div 
+          ref={descriptionRef}
           className="font-sans font-medium tracking-tight text-center text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl leading-tight px-2"
-          style={{ color: '#E84627' }}
+          style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}
         >
           <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
           <a 

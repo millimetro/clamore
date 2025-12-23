@@ -1,13 +1,118 @@
+"use client";
+
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useLoader } from "../contexts/LoaderContext";
+
 export default function ManifestoPage() {
+  const backButtonRef = useRef<HTMLAnchorElement>(null);
+  const contactButtonRef = useRef<HTMLAnchorElement>(null);
+  const smartLogoRef = useRef<HTMLDivElement>(null);
+  const manifestoImageRef = useRef<HTMLDivElement>(null);
+  const textContentRef = useRef<HTMLDivElement>(null);
+  const logoImageRef = useRef<HTMLDivElement>(null);
+  const mainContainerRef = useRef<HTMLElement>(null);
+  const { isLoaderComplete } = useLoader();
+
+  useGSAP(() => {
+    if (!mainContainerRef.current) return;
+
+    // Get all other elements (excluding logo) to animate after logo
+    const otherElements = [
+      backButtonRef.current,
+      contactButtonRef.current,
+      smartLogoRef.current,
+      manifestoImageRef.current,
+      textContentRef.current,
+    ].filter(Boolean);
+
+    // Set initial state immediately - logo starts hidden/scaled down, other elements hidden
+    if (logoImageRef.current) {
+      gsap.set(logoImageRef.current, {
+        opacity: 0,
+        scale: 0.5,
+      });
+    }
+
+    if (otherElements.length > 0) {
+      gsap.set(otherElements, {
+        opacity: 0,
+        y: 30,
+      });
+    }
+
+    // Create timeline for entrance animation
+    const tl = gsap.timeline({
+      delay: isLoaderComplete ? 0.1 : 0, // Reduced delay
+    });
+
+    // Phase 1: Animate logo in first (loader-like entrance)
+    if (logoImageRef.current) {
+      tl.to(logoImageRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.0,
+        ease: "expo.inOut",
+      }, "logo");
+    }
+
+    // Phase 2: Animate rest of content after logo (starts earlier, overlapping slightly)
+    if (backButtonRef.current && contactButtonRef.current) {
+      // Opacity fades in first
+      tl.to([backButtonRef.current, contactButtonRef.current], {
+        opacity: 1,
+        duration: 0.7,
+        ease: "sine.inOut",
+      }, "logo+=0.5")
+        // Then translate up
+        .to([backButtonRef.current, contactButtonRef.current], {
+          y: 0,
+          duration: 0.9,
+          ease: "expo.inOut",
+        }, "logo+=0.6");
+    }
+
+    if (smartLogoRef.current) {
+      tl.to(smartLogoRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "expo.inOut",
+      }, "logo+=0.7");
+    }
+
+    if (manifestoImageRef.current) {
+      tl.to(manifestoImageRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "expo.inOut",
+      }, "logo+=0.8");
+    }
+
+    if (textContentRef.current) {
+      tl.to(textContentRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "expo.inOut",
+      }, "logo+=0.9");
+    }
+  }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
+
   return (
-    <main className="min-h-[100dvh] bg-cream flex items-center justify-center relative">
+    <main ref={mainContainerRef} className="min-h-[100dvh] bg-cream flex items-center justify-center relative">
       {/* Back Button */}
       <a
+        ref={backButtonRef}
         href="/"
         className="fixed top-2 sm:top-4 md:top-4 left-2 sm:left-4 md:left-4 z-30 inline-flex items-center justify-center gap-2 w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627'
+          color: '#E84627',
+          opacity: 0,
+          transform: 'translateY(30px)'
         }}
       >
         <span>←</span>
@@ -16,18 +121,21 @@ export default function ManifestoPage() {
 
       {/* Contact Us Button */}
       <a
+        ref={contactButtonRef}
         href="/contact"
         className="fixed top-2 sm:top-4 md:top-4 right-2 sm:right-4 md:right-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627'
+          color: '#E84627',
+          opacity: 0,
+          transform: 'translateY(30px)'
         }}
       >
         Contact Us
       </a>
 
       {/* Smart Logo - Center */}
-      <div className="fixed top-2 sm:top-4 md:top-4 left-1/2 transform -translate-x-1/2 z-30">
+      <div ref={smartLogoRef} className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30" style={{ opacity: 0, transform: 'translate(-50%, 30px)' }}>
         <img 
           src="/logo/smart.svg" 
           alt="Smart Logo" 
@@ -36,14 +144,14 @@ export default function ManifestoPage() {
       </div>
 
       <section className="px-3 sm:px-4 md:px-4 lg:px-8 mt-20 sm:mt-24 md:mt-32 mb-5 w-full mx-auto">
-        <div className="mb-8 md:mb-12 w-full">
+        <div ref={manifestoImageRef} className="mb-8 md:mb-12 w-full" style={{ opacity: 0, transform: 'translateY(30px)' }}>
           <img 
             src="/svg/manifesto.svg" 
             alt="Manifesto" 
             className="w-full h-auto"
           />
         </div>
-        <div className="font-sans font-medium tracking-tight text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight sm:leading-tighter space-y-4 sm:space-y-6 text-justify" style={{ color: '#E84627' }}>
+        <div ref={textContentRef} className="font-sans font-medium tracking-tight text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight sm:leading-tighter space-y-4 sm:space-y-6 text-justify" style={{ color: '#E84627', opacity: 0, transform: 'translateY(30px)' }}>
           <p>
             <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
             <a 
@@ -79,7 +187,7 @@ export default function ManifestoPage() {
             Nel tempo è nata anche la collaborazione con Nuovi Suoni Live, concorso proposto e organizzato annualmente dalle Politiche Giovanili del Comune di <strong>Bergamo</strong> con il supporto di HG80 – Impresa sociale.
           </p>
         </div>
-        <div className="mt-8 md:mt-12 w-full">
+        <div ref={logoImageRef} className="mt-8 md:mt-12 w-full" style={{ opacity: 0, transform: 'scale(0.5)' }}>
           <img 
             src="/logo/logo.svg" 
             alt="Clamore Logo" 
