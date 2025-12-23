@@ -44,7 +44,7 @@ export default function Home() {
       </a>
 
       {/* Social Links - Bottom Right */}
-      <div className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-2 sm:gap-3 md:gap-2">
+      <div className="fixed bottom-2 sm:bottom-4 md:bottom-4 right-2 sm:right-4 md:right-4 z-30 flex items-center gap-3 sm:gap-4 md:gap-3">
         <a
           href="https://www.instagram.com/clamore.festival/"
           target="_blank"
@@ -53,7 +53,7 @@ export default function Home() {
           aria-label="Instagram"
         >
           <svg
-            className="w-9 h-9 sm:w-6 sm:h-6 md:w-9 md:h-9"
+            className="w-8 h-8 sm:w-5 sm:h-5 md:w-8 md:h-8"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export default function Home() {
           aria-label="Facebook"
         >
           <svg
-            className="w-9 h-9 sm:w-6 sm:h-6 md:w-9 md:h-9"
+            className="w-8 h-8 sm:w-5 sm:h-5 md:w-8 md:h-8"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"

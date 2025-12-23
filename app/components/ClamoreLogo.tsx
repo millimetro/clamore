@@ -115,12 +115,11 @@ export default function ClamoreLogo() {
   return (
     <div
       ref={wrapperRef}
-      className="flex items-center justify-center w-full max-w-[90vw] sm:max-w-[600px]"
+      className="flex items-center justify-center w-full aspect-square"
       style={{
         perspective: "1000px",
-        width: "100%",
-        maxWidth: "600px",
-        aspectRatio: "1 / 1",
+        width: "clamp(250px, min(75vw, 65vh), 800px)",
+        maxWidth: "min(95vw, 90vh)",
       }}
     >
       <div
@@ -229,7 +228,7 @@ export default function ClamoreLogo() {
         viewBox="0 0 262 214"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute z-10 w-[26%] h-auto max-w-[156px] max-h-[128px]"
+        className="absolute z-10 w-[26%] h-auto sm:w-[24%] md:w-[26%]"
         style={{
           transformOrigin: "center center",
         }}
