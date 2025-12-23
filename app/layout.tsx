@@ -6,7 +6,6 @@ import GridOverlay from "./components/tools/GridOverlay";
 import ConditionalLoader from "./components/Loader/ConditionalLoader";
 import { GSAPTimelineViewer } from "./components/tools/GSAPTimeline";
 import Menu from "./components/Menu/Menu";
-import NavigationSimple from "./components/NavigationSimple";
 import LenisProvider from "./components/tools/LenisProvider";
 import { LoaderProvider } from "./contexts/LoaderContext";
 
