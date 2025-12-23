@@ -2,7 +2,7 @@ import React from "react";
 
 export default function WireframeSection({ title }: { title: string }) {
   return (
-    <section className=" border-black grid place-items-center min-h-screen">
+    <section className=" border-black grid place-items-center min-h-[100dvh]">
       <p className="text-black">{title}</p>
     </section>
   );

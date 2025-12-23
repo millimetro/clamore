@@ -7,7 +7,7 @@ export default function Menu() {
       <img
         src="/logo/Logo_w.svg"
         alt="Clamore Logo"
-        className="h-[12vh] mx-auto"
+        className="h-[12dvh] mx-auto"
       />
 
       <ul className="flex justify-end gap-4">

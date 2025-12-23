@@ -172,7 +172,7 @@ export default function ValuesSection({ text }: ValuesSectionProps) {
     <section 
       ref={containerRef}
       id="values" 
-      className="relative px-4 md:px-6 grid items-center justify-center h-screen py-12 md:py-24 w-full border-t-2 border-b-2 border-black z-20"
+      className="relative px-4 md:px-6 grid items-center justify-center h-[100dvh] py-12 md:py-24 w-full border-t-2 border-b-2 border-black z-20"
       style={{ background: 'radial-gradient(circle at center, rgb(168, 85, 247) 0%, rgb(168, 85, 247) 20%, #161616 35%)' }}
     >
       <div 

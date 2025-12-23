@@ -6,7 +6,7 @@ interface SocialLink {
 }
 
 const getSocialIcon = (name: string) => {
-  const iconClass = "w-5 h-5 md:w-6 md:h-6 text-cream";
+  const iconClass = "w-7 h-7 md:w-6 md:h-6 text-cream";
   
   switch (name.toLowerCase()) {
     case "facebook":

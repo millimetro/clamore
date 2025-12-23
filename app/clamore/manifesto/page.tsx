@@ -1,10 +1,10 @@
 export default function ManifestoPage() {
   return (
-    <main className="min-h-screen bg-cream flex items-center justify-center relative">
+    <main className="min-h-[100dvh] bg-cream flex items-center justify-center relative">
       {/* Back Button */}
       <a
         href="/"
-        className="fixed top-4 md:top-8 left-4 md:left-8 z-30 inline-flex items-center justify-center gap-2 w-[180px] md:w-[200px] px-4 md:px-6 py-2 md:py-3 rounded-full font-bold font-brand uppercase text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed top-2 sm:top-4 md:top-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center gap-2 w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -17,7 +17,7 @@ export default function ManifestoPage() {
       {/* Contact Us Button */}
       <a
         href="/contact"
-        className="fixed top-4 md:top-8 right-4 md:right-8 z-30 inline-flex items-center justify-center w-[180px] md:w-[200px] px-4 md:px-6 py-2 md:py-3 rounded-full font-bold font-brand uppercase text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -27,15 +27,15 @@ export default function ManifestoPage() {
       </a>
 
       {/* Smart Logo - Center */}
-      <div className="fixed top-4 md:top-8 left-1/2 transform -translate-x-1/2 z-30">
+      <div className="fixed top-2 sm:top-4 md:top-8 left-1/2 transform -translate-x-1/2 z-30">
         <img 
           src="/logo/smart.svg" 
           alt="Smart Logo" 
-          className="h-8 md:h-10 w-auto"
+          className="h-6 sm:h-8 md:h-10 w-auto"
         />
       </div>
 
-      <section className="px-2 md:px-4 lg:px-6 mt-32 mb-5 w-full mx-auto">
+      <section className="px-3 sm:px-4 md:px-6 lg:px-8 mt-20 sm:mt-24 md:mt-32 mb-5 w-full mx-auto">
         <div className="mb-8 md:mb-12 w-full">
           <img 
             src="/svg/manifesto.svg" 
@@ -43,7 +43,7 @@ export default function ManifestoPage() {
             className="w-full h-auto"
           />
         </div>
-        <div className="font-sans font-medium tracking-tight text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-tighter space-y-6 text-justify" style={{ color: '#E84627' }}>
+        <div className="font-sans font-medium tracking-tight text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight sm:leading-tighter space-y-4 sm:space-y-6 text-justify" style={{ color: '#E84627' }}>
           <p>
             <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
             <a 

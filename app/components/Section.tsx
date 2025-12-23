@@ -114,7 +114,7 @@ export default function Section({
     <section
       ref={sectionRef}
       id={id}
-      className={`sticky top-0 w-full h-[calc(100vh-6vh)] md:h-[calc(100vh-8vh)] ${bgColor} border-t ${topBorderClass} flex flex-col md:flex-row z-20`}
+      className={`sticky top-0 w-full h-[calc(100dvh-6dvh)] md:h-[calc(100dvh-8dvh)] ${bgColor} border-t ${topBorderClass} flex flex-col md:flex-row z-20`}
     >
       <div 
         ref={imageContainerRef}

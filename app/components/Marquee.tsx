@@ -44,7 +44,7 @@ export default function Marquee({ text, href }: { text: string; href?: string })
     </div>
   );
 
-  const className = "fixed top-[12vh] md:top-[12vh] left-0 right-0 overflow-hidden bg-yellow-400 text-black py-1.5 md:py-0.5 border-b-2 border-black z-10 group hover:bg-black hover:text-white transition-all duration-300 group-hover:scale-110 origin-top cursor-pointer";
+  const className = "fixed top-[10dvh] sm:top-[12dvh] md:top-[12dvh] left-0 right-0 overflow-hidden bg-yellow-400 text-black py-1 sm:py-1.5 md:py-0.5 border-b-2 border-black z-10 group hover:bg-black hover:text-white transition-all duration-300 group-hover:scale-110 origin-top cursor-pointer";
 
   if (href) {
     return (

@@ -54,7 +54,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3 md:py-0 flex items-center justify-center lg:justify-between bg-cream border-b-2 border-black min-h-[10vh] md:min-h-[8vh]">
+      <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3 md:py-0 flex items-center justify-center lg:justify-between bg-cream border-b-2 border-black min-h-[10dvh] md:min-h-[8dvh]">
         {/* Logo */}
         <div>
           <img
@@ -167,7 +167,7 @@ export default function Navigation() {
               aria-label="Facebook"
             >
               <svg
-                className="w-6 h-6 text-black"
+                className="w-8 h-8 md:w-6 md:h-6 text-black"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@ export default function Navigation() {
               aria-label="Instagram"
             >
               <svg
-                className="w-6 h-6 text-black"
+                className="w-8 h-8 md:w-6 md:h-6 text-black"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +199,7 @@ export default function Navigation() {
               aria-label="YouTube"
             >
               <svg
-                className="w-6 h-6 text-black"
+                className="w-8 h-8 md:w-6 md:h-6 text-black"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +213,7 @@ export default function Navigation() {
               aria-label="Flickr"
             >
               <svg
-                className="w-6 h-6 text-black"
+                className="w-8 h-8 md:w-6 md:h-6 text-black"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"

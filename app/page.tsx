@@ -3,18 +3,15 @@ import Marquee from "./components/Marquee";
 import Section from "./components/Section";
 import ValuesSection from "./components/ValuesSection";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import HeroCentered from "./components/HeroCentered";
-import HeroGreen from "./components/HeroGreen";
 import ClamoreLogo from "./components/ClamoreLogo";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-cream snap-y snap-mandatory">
+    <main className="min-h-[100dvh] bg-cream snap-y snap-mandatory">
       {/* Manifesto Button - Left Side */}
       <a
         href="/clamore/manifesto"
-        className="fixed left-4 md:left-8 top-4 md:top-8 z-30 inline-flex items-center justify-center w-[180px] md:w-[200px] px-4 md:px-6 py-2 md:py-3 rounded-full font-bold font-brand uppercase text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed left-2 sm:left-4 md:left-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -26,7 +23,7 @@ export default function Home() {
       {/* Contact Us Button - Right Side */}
       <a
         href="/contact"
-        className="fixed right-4 md:right-8 top-4 md:top-8 z-30 inline-flex items-center justify-center w-[180px] md:w-[200px] px-4 md:px-6 py-2 md:py-3 rounded-full font-bold font-brand uppercase text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed right-2 sm:right-4 md:right-8 top-2 sm:top-4 md:top-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -40,7 +37,7 @@ export default function Home() {
         href="https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 md:bottom-8 left-4 md:left-8 z-30 inline-flex items-center justify-center w-[180px] md:w-[200px] px-4 md:px-6 py-2 md:py-3 rounded-full font-bold font-brand uppercase text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
+        className="fixed bottom-2 sm:bottom-4 md:bottom-8 left-2 sm:left-4 md:left-8 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream"
         style={{ 
           borderColor: '#E84627',
           color: '#E84627'
@@ -50,7 +47,7 @@ export default function Home() {
       </a>
 
       {/* Social Links - Bottom Right */}
-      <div className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-30 flex items-center gap-3 md:gap-4">
+      <div className="fixed bottom-2 sm:bottom-4 md:bottom-8 right-2 sm:right-4 md:right-8 z-30 flex items-center gap-2 sm:gap-3 md:gap-4">
         <a
           href="https://www.instagram.com/inkclubbergamo/"
           target="_blank"
@@ -59,7 +56,7 @@ export default function Home() {
           aria-label="Instagram"
         >
           <svg
-            className="w-6 h-6 md:w-7 md:h-7"
+            className="w-7 h-7 sm:w-6 sm:h-6 md:w-7 md:h-7"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +73,7 @@ export default function Home() {
           aria-label="Facebook"
         >
           <svg
-            className="w-6 h-6 md:w-7 md:h-7"
+            className="w-7 h-7 sm:w-6 sm:h-6 md:w-7 md:h-7"
             fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -87,16 +84,16 @@ export default function Home() {
         </a>
       </div>
       
-      <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 md:px-6">
+      <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-6 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
         <div 
-          className="font-bold font-brand uppercase text-base md:text-lg lg:text-xl tracking-tight"
+          className="font-bold font-brand uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
           style={{ color: '#E84627' }}
         >
           Coming Soon
         </div>
         <ClamoreLogo />
         <div 
-          className="font-sans font-medium tracking-tight text-center text-sm md:text-base lg:text-lg max-w-2xl leading-tight"
+          className="font-sans font-medium tracking-tight text-center text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl leading-tight px-2"
           style={{ color: '#E84627' }}
         >
           <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
