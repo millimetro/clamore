@@ -2,10 +2,9 @@
 
 import { useRef, useImperativeHandle, forwardRef, useEffect } from "react";
 import { gsap } from "gsap";
-import type { Timeline } from "gsap";
 
 export interface StatsSectionRef {
-  setupAnimations: (tl: Timeline, position: string | number) => void;
+  setupAnimations: (tl: ReturnType<typeof gsap.timeline>, position: string | number) => void;
 }
 
 interface StatsSectionProps {
@@ -20,7 +19,7 @@ const StatsSection = forwardRef<StatsSectionRef, StatsSectionProps>((props, ref)
   const statProvincesRef = useRef<HTMLDivElement>(null);
 
   useImperativeHandle(ref, () => ({
-    setupAnimations: (tl: Timeline, position: string | number) => {
+    setupAnimations: (tl: ReturnType<typeof gsap.timeline>, position: string | number) => {
       // Get individual stat cards
       const statCards = [
         statYearRef.current,
