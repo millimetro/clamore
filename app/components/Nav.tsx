@@ -12,6 +12,8 @@ export interface NavRef {
 const Nav = forwardRef<NavRef>((props, ref) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isManifestoPage = pathname === "/manifesto";
+  const isEdizioniPage = pathname === "/edizioni";
   const manifestoButtonRef = useRef<HTMLAnchorElement>(null);
   const edizioniButtonRef = useRef<HTMLAnchorElement>(null);
   const contactButtonRef = useRef<HTMLAnchorElement>(null);
@@ -87,7 +89,7 @@ const Nav = forwardRef<NavRef>((props, ref) => {
         }, "logo+=0.4");
       }
     },
-  }), [isHomePage]);
+  }), [isHomePage, isManifestoPage, isEdizioniPage]);
 
   useGSAP(() => {
     // Set initial state immediately
@@ -167,10 +169,14 @@ const Nav = forwardRef<NavRef>((props, ref) => {
       <a
         ref={manifestoButtonRef}
         href="/manifesto"
-        className="fixed left-2 sm:left-4 md:left-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 bg-cream hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className={`fixed left-2 sm:left-4 md:left-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 cursor-pointer ${
+          isManifestoPage 
+            ? 'bg-[#E84627] text-cream' 
+            : 'bg-cream hover:bg-[#E84627] hover:!text-cream'
+        }`}
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627',
+          color: isManifestoPage ? '#e2e0d8' : '#E84627',
           opacity: 0,
           transform: 'translateY(10px)'
         }}
@@ -182,10 +188,14 @@ const Nav = forwardRef<NavRef>((props, ref) => {
       <a
         ref={edizioniButtonRef}
         href="/edizioni"
-        className="fixed right-2 sm:right-4 md:right-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 bg-cream hover:bg-[#E84627] hover:!text-cream cursor-pointer"
+        className={`fixed right-2 sm:right-4 md:right-4 top-2 sm:top-4 md:top-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 cursor-pointer ${
+          isEdizioniPage 
+            ? 'bg-[#E84627] text-cream' 
+            : 'bg-cream hover:bg-[#E84627] hover:!text-cream'
+        }`}
         style={{ 
           borderColor: '#E84627',
-          color: '#E84627',
+          color: isEdizioniPage ? '#e2e0d8' : '#E84627',
           opacity: 0,
           transform: 'translateY(10px)'
         }}

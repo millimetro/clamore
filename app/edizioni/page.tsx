@@ -12,6 +12,7 @@ export default function EdizioniPage() {
   const navRef = useRef<NavRef>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const carouselTrackRef = useRef<HTMLDivElement>(null);
+  const carouselNavRef = useRef<HTMLDivElement>(null);
   const mainContainerRef = useRef<HTMLElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
@@ -26,6 +27,13 @@ export default function EdizioniPage() {
         opacity: 0,
         y: 20,
         xPercent: 0,
+      });
+    }
+
+    if (carouselNavRef.current) {
+      gsap.set(carouselNavRef.current, {
+        opacity: 0,
+        y: 20,
       });
     }
 
@@ -50,6 +58,16 @@ export default function EdizioniPage() {
         duration: 0.5,
         ease: "expo.inOut",
       }, "logo+=0.5");
+    }
+
+    // Animate carousel navigation controls
+    if (carouselNavRef.current) {
+      tl.to(carouselNavRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.7");
     }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
@@ -224,7 +242,11 @@ export default function EdizioniPage() {
           </div>
 
           {/* Navigation Controls - Arrows and Indicators */}
-          <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-12 lg:mt-16 mb-6 sm:mb-8 md:mb-12 lg:mb-16">
+          <div 
+            ref={carouselNavRef}
+            className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-12 lg:mt-16 mb-6 sm:mb-8 md:mb-12 lg:mb-16"
+            style={{ opacity: 0, transform: 'translateY(20px)' }}
+          >
             {/* Previous Button */}
             <button
               onClick={goToPrev}
