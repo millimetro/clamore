@@ -169,7 +169,7 @@ export default function EdizioniPage() {
                 >
                   {/* Background Image */}
                   <img 
-                    src="/foto/2025.jpg" 
+                    src="/foto/54619050514_4f198b5e6c_c.jpg" 
                     alt={`Edizione ${year}`}
                     className="absolute inset-0 w-full h-full object-cover"
                   />

@@ -5,11 +5,13 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useLoader } from "../contexts/LoaderContext";
 import Nav, { type NavRef } from "../components/Nav";
+import StatsSection, { type StatsSectionRef } from "../components/StatsSection";
 
 export default function ManifestoPage() {
   const navRef = useRef<NavRef>(null);
   const manifestoImageRef = useRef<HTMLDivElement>(null);
   const textContentRef = useRef<HTMLDivElement>(null);
+  const statsSectionRef = useRef<StatsSectionRef>(null);
   const logoImageRef = useRef<HTMLDivElement>(null);
   const sponsorLogosRef = useRef<HTMLDivElement>(null);
   const mainContainerRef = useRef<HTMLElement>(null);
@@ -78,13 +80,18 @@ export default function ManifestoPage() {
       }, "logo+=0.6");
     }
 
+    // Setup stats section animations
+    if (statsSectionRef.current) {
+      statsSectionRef.current.setupAnimations(tl, "logo+=0.7");
+    }
+
     if (sponsorLogosRef.current) {
       tl.to(sponsorLogosRef.current, {
         opacity: 1,
         y: 0,
         duration: 0.5,
         ease: "expo.inOut",
-      }, "logo+=0.7");
+      }, "logo+=1.3");
     }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
@@ -137,14 +144,18 @@ export default function ManifestoPage() {
           </p>
         </div>
 
-        <div ref={sponsorLogosRef} className="mt-8 md:my-24 w-full flex justify-center" style={{ opacity: 0, transform: 'translateY(10px)' }}>
+        <div className="mt-8 md:mt-12 lg:mt-18">
+          <StatsSection ref={statsSectionRef} />
+        </div>
+
+        <div ref={sponsorLogosRef} className="md:my-16 w-full max-w-7xl mx-auto flex justify-center" style={{ opacity: 0, transform: 'translateY(10px)' }}>
           <img 
             src="/sponsor/plancia.png" 
             alt="Sponsor Loghi" 
             className="w-full h-auto"
           />
         </div>
-        <div ref={logoImageRef} className="mt-8 md:mt-12 w-full" style={{ opacity: 0 }}>
+        <div ref={logoImageRef} className="mt-8 md:mt-12 w-full mb-16" style={{ opacity: 0 }}>
           <img 
             src="/logo/logo.svg" 
             alt="Clamore Logo" 
