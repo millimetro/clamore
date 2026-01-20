@@ -147,16 +147,16 @@ export default function EdizioniPage() {
     <main ref={mainContainerRef} className="min-h-[100dvh] bg-cream flex flex-col items-center justify-start relative pb-20">
       <Nav ref={navRef} />
 
-      <section className="px-3 sm:px-4 md:px-4 lg:px-8 mt-20 sm:mt-24 md:mt-32 mb-5 w-full max-w-7xl mx-auto">
+      <section className="mt-20 sm:mt-24 md:mt-32 mb-5 w-full">
         {/* Carousel Container */}
         <div 
           ref={cardsContainerRef}
-          className="relative w-full overflow-hidden min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)]"
+          className="relative w-full min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] overflow-hidden md:overflow-x-hidden md:overflow-y-visible"
         >
           {/* Carousel Track */}
           <div 
             ref={carouselTrackRef}
-            className="flex min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] touch-pan-y"
+            className="flex min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] touch-pan-y overflow-visible"
             style={{ opacity: 0, transform: 'translateY(20px)' }}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
@@ -165,7 +165,7 @@ export default function EdizioniPage() {
             {years.map((year) => (
               <div
                 key={year}
-                className="year-card min-w-full px-4 sm:px-6 md:px-8 flex-shrink-0 flex flex-col md:flex-row items-center md:items-stretch justify-center gap-0 md:gap-12 lg:gap-16"
+                className="year-card min-w-full px-4 sm:px-6 md:px-6 lg:px-8 flex-shrink-0 flex flex-col md:flex-row items-center md:items-stretch justify-center gap-0 md:gap-0 relative overflow-visible"
               >
                 {/* Year Display - Outside Card on Mobile, Inside Right Panel on Desktop */}
                 <div className="mb-4 sm:mb-6 md:mb-0 md:hidden">
@@ -177,64 +177,102 @@ export default function EdizioniPage() {
                   </span>
                 </div>
 
-                {/* Card with Image - Left on Desktop */}
-                <div 
-                  className="relative w-full max-w-sm sm:max-w-lg md:max-w-xs lg:max-w-sm md:w-auto h-full min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] md:h-auto md:aspect-[3/4] rounded-3xl overflow-hidden border sm:border-2 transition-all duration-300"
-                  style={{ 
-                    borderColor: '#E84627',
-                    backgroundColor: 'rgba(232, 70, 39, 0.05)'
-                  }}
-                >
-                  {/* Background Image */}
-                  <img 
-                    src="/foto/54619050514_4f198b5e6c_c.jpg" 
-                    alt={`Edizione ${year}`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  
-                  {/* Photo Album Button - Inside Card on Mobile */}
-                  <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 px-4 sm:px-0 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 md:hidden z-10">
-                    <a
-                      href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
-                      target={year === 2025 ? "_blank" : undefined}
-                      rel={year === 2025 ? "noopener noreferrer" : undefined}
-                      className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border sm:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
-                      style={{ 
-                        borderColor: '#E84627',
-                        color: '#E84627',
-                      }}
-                    >
-                      guarda la gallery
-                    </a>
+                {/* Desktop Layout - More Dynamic */}
+                <div className="hidden md:flex w-full items-center justify-center gap-6 lg:gap-8 xl:gap-12 relative overflow-visible">
+                  {/* Card with Image - Left side, offset */}
+                  <div 
+                    className="relative w-auto flex-shrink-0 md:w-[38%] lg:w-[42%] max-w-md lg:max-w-lg h-[calc(100dvh-320px)] lg:h-[calc(100dvh-340px)] xl:h-[calc(100dvh-320px)] rounded-3xl overflow-hidden border-2"
+                    style={{ 
+                      borderColor: '#E84627',
+                      backgroundColor: 'rgba(232, 70, 39, 0.05)',
+                      transform: 'translateY(0)',
+                    }}
+                  >
+                    {/* Background Image */}
+                    <img 
+                      src="/foto/54619050514_4f198b5e6c_c.jpg" 
+                      alt={`Edizione ${year}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Year and Button - Right side, larger and more prominent */}
+                  <div className="flex flex-col items-start justify-center gap-6 lg:gap-8 flex-1 max-w-xl relative z-10 md:pl-2 lg:pl-4 min-w-0 overflow-visible">
+                    {/* Edizione Label - Small text above year */}
+                    <div className="relative w-full overflow-visible">
+                      <span 
+                        className="font-bold font-brand text-xs md:text-sm lg:text-base uppercase tracking-wider transition-all duration-300 block"
+                        style={{ 
+                          color: '#E84627',
+                        }}
+                      >
+                        edizione
+                      </span>
+                    </div>
+                    {/* Large Year Display - Hero style */}
+                    <div className="relative w-full overflow-visible mt-2 md:mt-3 lg:mt-4">
+                      <span 
+                        className="font-bold font-brand text-6xl md:text-7xl lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] leading-none transition-all duration-300 block whitespace-nowrap"
+                        style={{ 
+                          color: '#E84627',
+                          lineHeight: '0.85',
+                          letterSpacing: '-0.02em',
+                        }}
+                      >
+                        {year}
+                      </span>
+                    </div>
+                    
+                    {/* Photo Album Button - Positioned below year */}
+                    <div className="mt-2 lg:mt-4">
+                      <a
+                        href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
+                        target={year === 2025 ? "_blank" : undefined}
+                        rel={year === 2025 ? "noopener noreferrer" : undefined}
+                        className="inline-flex items-center justify-center px-8 md:px-10 lg:px-12 py-3 md:py-4 lg:py-5 rounded-full font-bold font-brand uppercase text-base md:text-lg lg:text-xl border-2 cursor-pointer bg-cream"
+                        style={{ 
+                          borderColor: '#E84627',
+                          color: '#E84627',
+                        }}
+                      >
+                        guarda la gallery
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                {/* Year and Button - Right on Desktop, Hidden on Mobile */}
-                <div className="hidden md:flex flex-col items-start justify-center gap-6 md:gap-8 md:w-1/2">
-                  {/* Year Display */}
-                  <div>
-                    <span 
-                      className="font-bold font-brand text-4xl sm:text-5xl md:text-5xl lg:text-6xl transition-colors duration-300"
-                      style={{ color: '#E84627' }}
-                    >
-                      {year}
-                    </span>
-                  </div>
-                  
-                  {/* Photo Album Button */}
-                  <div>
-                    <a
-                      href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
-                      target={year === 2025 ? "_blank" : undefined}
-                      rel={year === 2025 ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
-                      style={{ 
-                        borderColor: '#E84627',
-                        color: '#E84627',
-                      }}
-                    >
-                      guarda la gallery
-                    </a>
+                {/* Mobile Layout - Unchanged */}
+                <div className="md:hidden w-full">
+                  {/* Card with Image - Mobile */}
+                  <div 
+                    className="relative w-full max-w-sm sm:max-w-lg h-full min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] rounded-3xl overflow-hidden border sm:border-2 transition-all duration-300"
+                    style={{ 
+                      borderColor: '#E84627',
+                      backgroundColor: 'rgba(232, 70, 39, 0.05)'
+                    }}
+                  >
+                    {/* Background Image */}
+                    <img 
+                      src="/foto/54619050514_4f198b5e6c_c.jpg" 
+                      alt={`Edizione ${year}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    
+                    {/* Photo Album Button - Inside Card on Mobile */}
+                    <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 px-4 sm:px-0 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-10">
+                      <a
+                        href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
+                        target={year === 2025 ? "_blank" : undefined}
+                        rel={year === 2025 ? "noopener noreferrer" : undefined}
+                        className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border sm:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
+                        style={{ 
+                          borderColor: '#E84627',
+                          color: '#E84627',
+                        }}
+                      >
+                        guarda la gallery
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -244,7 +282,7 @@ export default function EdizioniPage() {
           {/* Navigation Controls - Arrows and Indicators */}
           <div 
             ref={carouselNavRef}
-            className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-12 lg:mt-16 mb-6 sm:mb-8 md:mb-12 lg:mb-16"
+            className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-20 lg:mt-24 xl:mt-28 mb-6 sm:mb-8 md:mb-12 lg:mb-16"
             style={{ opacity: 0, transform: 'translateY(20px)' }}
           >
             {/* Previous Button */}
