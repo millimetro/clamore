@@ -10,6 +10,7 @@ import Nav, { NavRef } from "./components/Nav";
 import { useLoader } from "./contexts/LoaderContext";
 
 export default function Home() {
+  const edizioneRef = useRef<HTMLDivElement>(null);
   const comingSoonRef = useRef<HTMLDivElement>(null);
   const logoContainerRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ export default function Home() {
 
     // Get elements to animate after logo
     const otherElements = [
+      edizioneRef.current,
       comingSoonRef.current,
       descriptionRef.current,
     ].filter(Boolean);
@@ -61,6 +63,15 @@ export default function Home() {
       navRef.current.setupAnimations(tl);
     }
 
+    if (edizioneRef.current) {
+      tl.to(edizioneRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.4");
+    }
+
     if (comingSoonRef.current) {
       tl.to(comingSoonRef.current, {
         opacity: 1,
@@ -85,12 +96,21 @@ export default function Home() {
       <Nav ref={navRef} />
       
       <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-4 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
-        <div 
-          ref={comingSoonRef}
-          className="font-bold font-brand uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
-          style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
-        >
-          Coming Soon
+        <div className="flex flex-col items-center gap-0">
+          <div 
+            ref={edizioneRef}
+            className="font-bold font-brand uppercase text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight"
+            style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
+          >
+            edizione 2026
+          </div>
+          <div 
+            ref={comingSoonRef}
+            className="font-bold font-brand uppercase text-xs sm:text-sm md:text-base lg:text-lg tracking-tight"
+            style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
+          >
+            Coming Soon
+          </div>
         </div>
         <div ref={logoContainerRef} style={{ opacity: 0, transform: 'scale(0.5)' }}>
           <ClamoreLogo />
@@ -110,7 +130,7 @@ export default function Home() {
           >
             Ink Club APS
           </a>
-          {" "}in collaborazione con diverse realtà di <strong>Bergamo</strong>
+          {" "}in collaborazione con diverse realtà di <strong>Bergamo</strong>, è nato nel 2017 con l'intento di valorizzare tutti i progetti musicali della città e della provincia.
         </div>
       </div>
     </main>

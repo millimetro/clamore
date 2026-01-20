@@ -44,12 +44,14 @@ const Nav = forwardRef<NavRef>((props, ref) => {
           opacity: 0,
           xPercent: -50,
           y: 10,
+          scale: 1,
         });
 
         // Animate logo button first (if not on home page)
         tl.to(logoButtonRef.current, {
           opacity: 1,
           y: 0,
+          scale: 1,
           duration: 0.5,
           ease: "expo.inOut",
         }, "logo+=0.2");
@@ -110,7 +112,33 @@ const Nav = forwardRef<NavRef>((props, ref) => {
         opacity: 0,
         xPercent: -50,
         y: 10,
+        scale: 1,
       });
+
+      // Add hover scale effect
+      const logoElement = logoButtonRef.current;
+      const handleMouseEnter = () => {
+        gsap.to(logoElement, {
+          scale: 1.1,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      };
+      const handleMouseLeave = () => {
+        gsap.to(logoElement, {
+          scale: 1,
+          duration: 0.15,
+          ease: "power2.out",
+        });
+      };
+
+      logoElement.addEventListener("mouseenter", handleMouseEnter);
+      logoElement.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        logoElement.removeEventListener("mouseenter", handleMouseEnter);
+        logoElement.removeEventListener("mouseleave", handleMouseLeave);
+      };
     }
   }, [isHomePage]);
 
@@ -121,7 +149,7 @@ const Nav = forwardRef<NavRef>((props, ref) => {
         <a
           ref={logoButtonRef}
           href="/"
-          className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30 inline-flex items-center justify-center cursor-pointer hover:opacity-80 hover:scale-110 transition-all duration-300"
+          className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30 inline-flex items-center justify-center cursor-pointer hover:opacity-80 transition-all duration-300 origin-center"
           style={{ 
             opacity: 0,
             transform: 'translateX(-50%) translateY(10px)'
