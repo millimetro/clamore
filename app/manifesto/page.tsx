@@ -4,14 +4,14 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useLoader } from "../contexts/LoaderContext";
+import Nav, { type NavRef } from "../components/Nav";
 
 export default function ManifestoPage() {
-  const backButtonRef = useRef<HTMLAnchorElement>(null);
-  const contactButtonRef = useRef<HTMLAnchorElement>(null);
-  const smartLogoRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<NavRef>(null);
   const manifestoImageRef = useRef<HTMLDivElement>(null);
   const textContentRef = useRef<HTMLDivElement>(null);
   const logoImageRef = useRef<HTMLDivElement>(null);
+  const sponsorLogosRef = useRef<HTMLDivElement>(null);
   const mainContainerRef = useRef<HTMLElement>(null);
   const { isLoaderComplete } = useLoader();
 
@@ -20,11 +20,9 @@ export default function ManifestoPage() {
 
     // Get all other elements (excluding logo) to animate after logo
     const otherElements = [
-      backButtonRef.current,
-      contactButtonRef.current,
-      smartLogoRef.current,
       manifestoImageRef.current,
       textContentRef.current,
+      sponsorLogosRef.current,
     ].filter(Boolean);
 
     // Set initial state immediately - logo starts hidden/scaled down, other elements hidden
@@ -57,24 +55,9 @@ export default function ManifestoPage() {
       }, "logo");
     }
 
-    // Phase 2: Animate rest of content after logo (starts earlier, overlapping slightly)
-    if (backButtonRef.current && contactButtonRef.current) {
-      tl.to([backButtonRef.current, contactButtonRef.current], {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "expo.inOut",
-        stagger: 0.1,
-      }, "logo+=0.3");
-    }
-
-    if (smartLogoRef.current) {
-      tl.to(smartLogoRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "expo.inOut",
-      }, "logo+=0.4");
+    // Setup nav animations on the timeline
+    if (navRef.current) {
+      navRef.current.setupAnimations(tl);
     }
 
     if (manifestoImageRef.current) {
@@ -94,49 +77,20 @@ export default function ManifestoPage() {
         ease: "expo.inOut",
       }, "logo+=0.6");
     }
+
+    if (sponsorLogosRef.current) {
+      tl.to(sponsorLogosRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.7");
+    }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
   return (
     <main ref={mainContainerRef} className="min-h-[100dvh] bg-cream flex items-center justify-center relative">
-      {/* Back Button */}
-      <a
-        ref={backButtonRef}
-        href="/"
-        className="fixed top-2 sm:top-4 md:top-4 left-2 sm:left-4 md:left-4 z-30 inline-flex items-center justify-center gap-2 w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
-        style={{ 
-          borderColor: '#E84627',
-          color: '#E84627',
-          opacity: 0,
-          transform: 'translateY(10px)'
-        }}
-      >
-        <span>←</span>
-        <span>back</span>
-      </a>
-
-      {/* Contact Us Button */}
-      <a
-        ref={contactButtonRef}
-        href="/contact"
-        className="fixed top-2 sm:top-4 md:top-4 right-2 sm:right-4 md:right-4 z-30 inline-flex items-center justify-center w-[140px] sm:w-[160px] md:w-[200px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full font-bold font-brand uppercase text-xs sm:text-sm md:text-base border md:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer"
-        style={{ 
-          borderColor: '#E84627',
-          color: '#E84627',
-          opacity: 0,
-          transform: 'translateY(10px)'
-        }}
-      >
-        Contact Us
-      </a>
-
-      {/* Smart Logo - Center */}
-      <div ref={smartLogoRef} className="fixed top-2 sm:top-4 md:top-4 left-1/2 z-30" style={{ opacity: 0, transform: 'translate(-50%, 10px)' }}>
-        <img 
-          src="/logo/smart.svg" 
-          alt="Smart Logo" 
-          className="h-6 sm:h-8 md:h-10 w-auto"
-        />
-      </div>
+      <Nav ref={navRef} />
 
       <section className="px-3 sm:px-4 md:px-4 lg:px-8 mt-20 sm:mt-24 md:mt-32 mb-5 w-full mx-auto">
         <div ref={manifestoImageRef} className="mb-8 md:mb-12 w-full" style={{ opacity: 0, transform: 'translateY(10px)' }}>
@@ -182,7 +136,15 @@ export default function ManifestoPage() {
             Nel tempo è nata anche la collaborazione con Nuovi Suoni Live, concorso proposto e organizzato annualmente dalle Politiche Giovanili del Comune di <strong>Bergamo</strong> con il supporto di HG80 – Impresa sociale.
           </p>
         </div>
-        <div ref={logoImageRef} className="mt-8 md:mt-12 w-full" style={{ opacity: 0, transform: 'scale(0.5)' }}>
+
+        <div ref={sponsorLogosRef} className="mt-8 md:my-24 w-full flex justify-center" style={{ opacity: 0, transform: 'translateY(10px)' }}>
+          <img 
+            src="/sponsor/plancia.png" 
+            alt="Sponsor Loghi" 
+            className="w-full h-auto"
+          />
+        </div>
+        <div ref={logoImageRef} className="mt-8 md:mt-12 w-full" style={{ opacity: 0 }}>
           <img 
             src="/logo/logo.svg" 
             alt="Clamore Logo" 
