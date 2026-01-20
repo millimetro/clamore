@@ -133,12 +133,12 @@ export default function EdizioniPage() {
         {/* Carousel Container */}
         <div 
           ref={cardsContainerRef}
-          className="relative w-full overflow-hidden min-h-[calc(100dvh-240px)] sm:min-h-[calc(100dvh-320px)]"
+          className="relative w-full overflow-hidden min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)]"
         >
           {/* Carousel Track */}
           <div 
             ref={carouselTrackRef}
-            className="flex min-h-[calc(100dvh-240px)] sm:min-h-[calc(100dvh-320px)] touch-pan-y"
+            className="flex min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] touch-pan-y"
             style={{ opacity: 0, transform: 'translateY(20px)' }}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
@@ -147,7 +147,7 @@ export default function EdizioniPage() {
             {years.map((year) => (
               <div
                 key={year}
-                className="year-card min-w-full px-4 sm:px-6 md:px-8 flex-shrink-0 flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 md:gap-12 lg:gap-16"
+                className="year-card min-w-full px-4 sm:px-6 md:px-8 flex-shrink-0 flex flex-col md:flex-row items-center md:items-stretch justify-center gap-0 md:gap-12 lg:gap-16"
               >
                 {/* Year Display - Outside Card on Mobile, Inside Right Panel on Desktop */}
                 <div className="mb-4 sm:mb-6 md:mb-0 md:hidden">
@@ -161,7 +161,7 @@ export default function EdizioniPage() {
 
                 {/* Card with Image - Left on Desktop */}
                 <div 
-                  className="relative w-full max-w-sm sm:max-w-lg md:max-w-xs lg:max-w-sm md:w-auto h-full min-h-[calc(100dvh-240px)] sm:min-h-[calc(100dvh-320px)] md:h-auto md:aspect-[3/4] rounded-3xl overflow-hidden border-2 transition-all duration-300"
+                  className="relative w-full max-w-sm sm:max-w-lg md:max-w-xs lg:max-w-sm md:w-auto h-full min-h-[calc(100dvh-280px)] sm:min-h-[calc(100dvh-320px)] md:h-auto md:aspect-[3/4] rounded-3xl overflow-hidden border sm:border-2 transition-all duration-300"
                   style={{ 
                     borderColor: '#E84627',
                     backgroundColor: 'rgba(232, 70, 39, 0.05)'
@@ -180,7 +180,7 @@ export default function EdizioniPage() {
                       href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
                       target={year === 2025 ? "_blank" : undefined}
                       rel={year === 2025 ? "noopener noreferrer" : undefined}
-                      className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
+                      className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border sm:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
                       style={{ 
                         borderColor: '#E84627',
                         color: '#E84627',
@@ -224,12 +224,12 @@ export default function EdizioniPage() {
           </div>
 
           {/* Navigation Controls - Arrows and Indicators */}
-          <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-12 lg:mt-16">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 md:mt-12 lg:mt-16 mb-6 sm:mb-8 md:mb-12 lg:mb-16">
             {/* Previous Button */}
             <button
               onClick={goToPrev}
               disabled={currentIndex === 0}
-              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 bg-cream flex items-center justify-center transition-all duration-300 hover:bg-[#E84627] hover:!text-cream disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-cream disabled:hover:!text-[#E84627]"
+              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border sm:border-2 bg-cream flex items-center justify-center transition-all duration-300 hover:bg-[#E84627] hover:!text-cream disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-cream disabled:hover:!text-[#E84627]"
               style={{ 
                 borderColor: '#E84627',
                 color: '#E84627',
@@ -262,7 +262,7 @@ export default function EdizioniPage() {
             <button
               onClick={goToNext}
               disabled={currentIndex === years.length - 1}
-              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 bg-cream flex items-center justify-center transition-all duration-300 hover:bg-[#E84627] hover:!text-cream disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-cream disabled:hover:!text-[#E84627]"
+              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border sm:border-2 bg-cream flex items-center justify-center transition-all duration-300 hover:bg-[#E84627] hover:!text-cream disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-cream disabled:hover:!text-[#E84627]"
               style={{ 
                 borderColor: '#E84627',
                 color: '#E84627',
