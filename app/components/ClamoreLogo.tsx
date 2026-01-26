@@ -118,8 +118,8 @@ export default function ClamoreLogo() {
       className="flex items-center justify-center w-full aspect-square"
       style={{
         perspective: "1000px",
-        width: "clamp(250px, min(75vw, 65vh), 800px)",
-        maxWidth: "min(95vw, 90vh)",
+        width: "clamp(200px, min(60vw, 50vh), 600px)",
+        maxWidth: "min(85vw, 80vh)",
       }}
     >
       <div

@@ -10,8 +10,8 @@ import Nav, { NavRef } from "./components/Nav";
 import { useLoader } from "./contexts/LoaderContext";
 
 export default function Home() {
-  const edizioneRef = useRef<HTMLDivElement>(null);
-  const comingSoonRef = useRef<HTMLDivElement>(null);
+  const dateRef = useRef<HTMLDivElement>(null);
+  const subscribeButtonRef = useRef<HTMLAnchorElement>(null);
   const logoContainerRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
   const mainContainerRef = useRef<HTMLElement>(null);
@@ -23,8 +23,8 @@ export default function Home() {
 
     // Get elements to animate after logo
     const otherElements = [
-      edizioneRef.current,
-      comingSoonRef.current,
+      dateRef.current,
+      subscribeButtonRef.current,
       descriptionRef.current,
     ].filter(Boolean);
 
@@ -63,22 +63,13 @@ export default function Home() {
       navRef.current.setupAnimations(tl);
     }
 
-    if (edizioneRef.current) {
-      tl.to(edizioneRef.current, {
+    if (dateRef.current) {
+      tl.to(dateRef.current, {
         opacity: 1,
         y: 0,
         duration: 0.5,
         ease: "expo.inOut",
       }, "logo+=0.4");
-    }
-
-    if (comingSoonRef.current) {
-      tl.to(comingSoonRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "expo.inOut",
-      }, "logo+=0.5");
     }
 
     if (descriptionRef.current) {
@@ -89,6 +80,15 @@ export default function Home() {
         ease: "expo.inOut",
       }, "logo+=0.6");
     }
+
+    if (subscribeButtonRef.current) {
+      tl.to(subscribeButtonRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "expo.inOut",
+      }, "logo+=0.7");
+    }
   }, { scope: mainContainerRef, dependencies: [isLoaderComplete] });
 
   return (
@@ -98,18 +98,13 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 sm:gap-8 px-4 md:px-4 pt-20 sm:pt-24 md:pt-0 pb-20 sm:pb-24 md:pb-0">
         <div className="flex flex-col items-center gap-0">
           <div 
-            ref={edizioneRef}
-            className="font-bold font-brand uppercase text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight"
+            ref={dateRef}
+            className="font-brand text-center text-sm sm:text-base md:text-lg lg:text-xl"
             style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
           >
-            edizione 2026
-          </div>
-          <div 
-            ref={comingSoonRef}
-            className="font-bold font-brand uppercase text-xs sm:text-sm md:text-base lg:text-lg tracking-tight"
-            style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
-          >
-            Coming Soon
+            CLAMORE 2026
+            <br />
+            21-28 giugno 2026
           </div>
         </div>
         <div ref={logoContainerRef} style={{ opacity: 0, transform: 'scale(0.5)' }}>
@@ -117,7 +112,7 @@ export default function Home() {
         </div>
         <div 
           ref={descriptionRef}
-          className="font-sans font-medium tracking-tight text-center text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl leading-tight px-2"
+          className="font-sans font-medium tracking-tight text-center text-xs sm:text-sm md:text-sm lg:text-base max-w-2xl leading-tight px-2"
           style={{ color: '#E84627', opacity: 0, transform: 'translateY(10px)' }}
         >
           <strong>Clamore Festival</strong> è un progetto ideato, organizzato e promosso da{" "}
@@ -132,6 +127,21 @@ export default function Home() {
           </a>
           {" "}in collaborazione con diverse realtà di <strong>Bergamo</strong>, è nato nel 2017 con l'intento di valorizzare tutti i progetti musicali della città e della provincia.
         </div>
+        <a
+          ref={subscribeButtonRef}
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc_bOyAMuG3f6LLKNiPyD4XgtOz35hJsh3E8lz1fkJQfjEiow/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-10 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-3 md:py-4 lg:py-5 rounded-full font-bold font-brand uppercase text-sm sm:text-sm md:text-base lg:text-lg border cursor-pointer bg-cream transition-all duration-300 hover:bg-[#E84627] hover:!text-cream -mt-2 sm:-mt-3"
+          style={{ 
+            borderColor: '#E84627',
+            color: '#E84627',
+            opacity: 0,
+            transform: 'translateY(10px)'
+          }}
+        >
+          iscriviti alla call!
+        </a>
       </div>
     </main>
   );
