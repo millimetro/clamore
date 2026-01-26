@@ -5,8 +5,9 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useLoader } from "../contexts/LoaderContext";
 import Nav, { type NavRef } from "../components/Nav";
+import { edizioni } from "./data";
 
-const years = Array.from({ length: 9 }, (_, i) => 2017 + i).reverse(); // 2025 to 2017 (newest to oldest)
+const years = edizioni.map((edizione) => edizione.year);
 
 export default function EdizioniPage() {
   const navRef = useRef<NavRef>(null);
@@ -97,6 +98,11 @@ export default function EdizioniPage() {
     }
   };
 
+  // Helper function to get the edizione data for a year
+  const getEdizione = (year: number) => {
+    return edizioni.find((e) => e.year === year);
+  };
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -162,7 +168,9 @@ export default function EdizioniPage() {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            {years.map((year) => (
+            {years.map((year) => {
+              const edizione = getEdizione(year);
+              return (
               <div
                 key={year}
                 className="year-card min-w-full px-4 sm:px-6 md:px-6 lg:px-8 flex-shrink-0 flex flex-col md:flex-row items-center md:items-stretch justify-center gap-0 md:gap-0 relative overflow-visible"
@@ -224,20 +232,22 @@ export default function EdizioniPage() {
                     </div>
                     
                     {/* Photo Album Button - Positioned below year */}
-                    <div className="mt-2 lg:mt-4">
-                      <a
-                        href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
-                        target={year === 2025 ? "_blank" : undefined}
-                        rel={year === 2025 ? "noopener noreferrer" : undefined}
-                        className="inline-flex items-center justify-center px-8 md:px-10 lg:px-12 py-3 md:py-4 lg:py-5 rounded-full font-bold font-brand uppercase text-base md:text-lg lg:text-xl border-2 cursor-pointer bg-cream"
-                        style={{ 
-                          borderColor: '#E84627',
-                          color: '#E84627',
-                        }}
-                      >
-                        guarda la gallery
-                      </a>
-                    </div>
+                    {edizione?.link && (
+                      <div className="mt-2 lg:mt-4">
+                        <a
+                          href={edizione.link}
+                          target={edizione.isExternal ? "_blank" : undefined}
+                          rel={edizione.isExternal ? "noopener noreferrer" : undefined}
+                          className="inline-flex items-center justify-center px-8 md:px-10 lg:px-12 py-3 md:py-4 lg:py-5 rounded-full font-bold font-brand uppercase text-base md:text-lg lg:text-xl border-2 cursor-pointer bg-cream"
+                          style={{ 
+                            borderColor: '#E84627',
+                            color: '#E84627',
+                          }}
+                        >
+                          guarda la gallery
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -259,24 +269,27 @@ export default function EdizioniPage() {
                     />
                     
                     {/* Photo Album Button - Inside Card on Mobile */}
-                    <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 px-4 sm:px-0 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-10">
-                      <a
-                        href={year === 2025 ? "https://www.flickr.com/photos/201922523@N07/albums/72177720327178649/" : `/edizioni/${year}`}
-                        target={year === 2025 ? "_blank" : undefined}
-                        rel={year === 2025 ? "noopener noreferrer" : undefined}
-                        className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border sm:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
-                        style={{ 
-                          borderColor: '#E84627',
-                          color: '#E84627',
-                        }}
-                      >
-                        guarda la gallery
-                      </a>
-                    </div>
+                    {edizione?.link && (
+                      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 px-4 sm:px-0 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-10">
+                        <a
+                          href={edizione.link}
+                          target={edizione.isExternal ? "_blank" : undefined}
+                          rel={edizione.isExternal ? "noopener noreferrer" : undefined}
+                          className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 rounded-full font-bold font-brand uppercase text-sm sm:text-base md:text-lg border sm:border-2 transition-all duration-300 hover:bg-[#E84627] hover:!text-cream cursor-pointer bg-cream"
+                          style={{ 
+                            borderColor: '#E84627',
+                            color: '#E84627',
+                          }}
+                        >
+                          guarda la gallery
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Navigation Controls - Arrows and Indicators */}
